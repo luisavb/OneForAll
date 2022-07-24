@@ -5,7 +5,7 @@ CREATE DATABASE SpotifyClone;
 CREATE TABLE SpotifyClone.Planos(
     planos_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(100) NOT NULL,
-    valor_plano VARCHAR(10) CHECK (valor_plano >= 0) NOT NULL 
+    valor_plano VARCHAR(100) CHECK (valor_plano >= 0) NOT NULL 
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.Artistas(
@@ -16,7 +16,7 @@ CREATE TABLE SpotifyClone.Artistas(
 CREATE TABLE SpotifyClone.Usuarios(
     usuarios_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(100) NOT NULL,
-    idade VARCHAR(10) NOT NULL,
+    idade INT NOT NULL,
     tipos_plano INT,
     FOREIGN KEY (tipos_plano) REFERENCES Planos (planos_id),
     data_assinatura DATE NOT NULL
@@ -27,7 +27,7 @@ CREATE TABLE SpotifyClone.Albuns(
     artista INT,
     FOREIGN KEY (artista) REFERENCES Artistas (artistas_id),
     album VARCHAR(100) NOT NULL,
-    ano_lancamento VARCHAR(1000) NOT NULL
+    ano_lancamento YEAR NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.Musicas(
@@ -35,7 +35,7 @@ CREATE TABLE SpotifyClone.Musicas(
     album INT,
     FOREIGN KEY (album) REFERENCES Albuns (albuns_id),
     musica VARCHAR(100) NOT NULL,
-    duracao_segundos VARCHAR(100) NOT NULL
+    duracao_segundos INT NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.Reproducoes(
