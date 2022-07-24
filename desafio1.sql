@@ -99,8 +99,8 @@ VALUES
   
 INSERT INTO SpotifyClone.Musicas (musicas_id, album, musica, duracao_segundos)
 VALUES
-  (1,	1,	'Soul For US',	200),
-  (2,	1,	'Refletions Of Magic',	163),
+  (1,	1,	'Soul For Us',	200),
+  (2,	1,	'Reflections Of Magic',	163),
   (3,	1,	'Dance With Her Own',	116),
   (4,	2,	'Troubles Of My Inner Fire',	203),
   (5,	2,	'Time Fireworks',	152),
