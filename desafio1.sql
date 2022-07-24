@@ -5,13 +5,13 @@ CREATE DATABASE SpotifyClone;
 CREATE TABLE SpotifyClone.Planos(
     planos_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(100) NOT NULL,
-    valor_plano VARCHAR(100) CHECK (valor_plano >= 0) NOT NULL 
-) engine = InnoDB;
+    valor_plano DECIMAL(3, 2) NOT NULL 
+);
 
 CREATE TABLE SpotifyClone.Artistas(
     artistas_id INT PRIMARY KEY AUTO_INCREMENT,
     artista VARCHAR(100) NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.Usuarios(
     usuarios_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE SpotifyClone.Usuarios(
     tipos_plano INT,
     FOREIGN KEY (tipos_plano) REFERENCES Planos (planos_id),
     data_assinatura DATE NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.Albuns(
     albuns_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,7 +28,7 @@ CREATE TABLE SpotifyClone.Albuns(
     FOREIGN KEY (artista) REFERENCES Artistas (artistas_id),
     album VARCHAR(100) NOT NULL,
     ano_lancamento YEAR NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.Musicas(
     musicas_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,7 +36,7 @@ CREATE TABLE SpotifyClone.Musicas(
     FOREIGN KEY (album) REFERENCES Albuns (albuns_id),
     musica VARCHAR(100) NOT NULL,
     duracao_segundos INT NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.Reproducoes(
     usuario INT,
@@ -45,7 +45,7 @@ CREATE TABLE SpotifyClone.Reproducoes(
     FOREIGN KEY (musica) REFERENCES Musicas (musicas_id),
     data_reproducao TIMESTAMP,
     PRIMARY KEY (usuario, musica)
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.Seguindo(
     usuarios_seguindo INT,
@@ -53,7 +53,7 @@ CREATE TABLE SpotifyClone.Seguindo(
     artistas_seguidos INT,
     FOREIGN KEY (artistas_seguidos) REFERENCES Artistas (artistas_id),
     PRIMARY KEY(usuarios_seguindo, artistas_seguidos)
-) engine = InnoDB;
+);
 
 INSERT INTO SpotifyClone.Planos (plano, valor_plano)
 VALUES
